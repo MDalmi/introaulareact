@@ -8,7 +8,7 @@ import FormAlunos from './FormAlunos';
 function App() {
 
   const [contador, setContador] = useState(0);
-  //Estados
+  // Estados
   /* const incrementarContador = () => {
     setContador(contador+1)
   }
@@ -19,29 +19,32 @@ function App() {
   
   const [exibirForm, setExibirForm] = useState(false);
 
-  const [alunos, setAlunos] = useState([])
+  const [alunos, setAlunos] = useState([]);
 
   const adicionarAluno = (aluno) => {
-    setAlunos([...alunos,aluno]);
-  }
+    setAlunos([...alunos, aluno]);
+  };
 
+  const removerAluno = (aluno_x) => {
+    setAlunos(alunos.filter(aluno => aluno !== aluno_x));
+  };
 
   return (
     <div>
-      
-      <Titulo texto="NOTA ALUNOS"/>
+      <Titulo texto="MÉDIA DOS ALUNOS"/>
 
-  
       {
         exibirForm && 
         <FormAlunos adicionarAluno={adicionarAluno} setExibirForm={setExibirForm}/>
       }
 
       {!exibirForm &&
-        <Corpo dados={alunos}
+        <Corpo 
+          dados={alunos}
           /* incrementarContador={incrementarContador}
           decrementarContador={decrementarContador} */
           setExibirForm={setExibirForm}
+          removerAluno={removerAluno}
         />
       }
       
